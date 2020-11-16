@@ -20,5 +20,8 @@
   "homepage": "https://github.com/weronikaolejniczak/node-workshop#readme",
   "devDependencies": {
     "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
