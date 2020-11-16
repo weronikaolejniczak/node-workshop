@@ -1,17 +1,28 @@
-const http = require('http');
-
 const PORT = 3001;
+const express = require('express');
 
-http.createServer(function(request, response) {
-    const responseData = {
-        status: 'ok!'
-    };
+const app = express();
 
-    response.writeHead(200, {
-        'Content-Type': 'application/json'
-    });
+// GET /
+app.get('/', (req, res) => {
+    res.send('Hello, world!'); // default: 200, text/html
+});
 
-    response.end(JSON.stringify(responseData));
-}).listen(PORT);
+app.post('/', (req, res) => {
+    console.log(JSON.stringify(req.body, null, 2));
+    res.json({ ok: true });
+});
 
-console.log(`Node server is running on port ${PORT}.`)
+app.get('/ping', (req, res) => {
+    //res.json({ status: 'ok' });
+    res.status(201).json({ status: 'ok' });
+});
+
+app.listen(PORT, (err) => {
+    if (err) {
+        console.log('Error!');
+        throw err;
+    } else {
+        console.log(`Server is running at http://localhost:${PORT}/`);
+    }
+});
