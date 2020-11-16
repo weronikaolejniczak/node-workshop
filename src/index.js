@@ -1,6 +1,6 @@
 const http = require('http');
 
-const PORT = 3000;
+const PORT = 3001;
 
 http.createServer(function(request, response) {
     const responseData = {
