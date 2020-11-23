@@ -1,9 +1,11 @@
-const PORT = 3001;
+require('dotenv').config();
+
 const express = require('express');
-const bodyParser = require('body-parser');
+const constants = require('./config/constants');
+const middlewareConfig = require('./middleware');
 
 const app = express();
-app.use(bodyParser.json());
+middlewareConfig(app);
 
 // GET /
 app.get('/', (req, res) => {
@@ -21,6 +23,7 @@ app.get('/ping', (req, res) => {
     res.status(201).json({ status: 'ok' });
 });
 
+const PORT = constants.PORT;
 app.listen(PORT, (err) => {
     if (err) {
         console.log('Error!');
